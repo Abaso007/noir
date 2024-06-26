@@ -1,170 +1,170 @@
 require "../models/minilexer/*"
 
-# Keywords
-ABSTRACT     = "abstract"
-ASSERT       = "assert"
-BOOLEAN      = "boolean"
-BREAK        = "break"
-BYTE         = "byte"
-CASE         = "case"
-CATCH        = "catch"
-CHAR         = "char"
-CLASS        = "class"
-CONST        = "const"
-CONTINUE     = "continue"
-DEFAULT      = "default"
-DO           = "do"
-DOUBLE       = "double"
-ELSE         = "else"
-ENUM         = "enum"
-EXTENDS      = "extends"
-FINAL        = "final"
-FINALLY      = "finally"
-FLOAT        = "float"
-FOR          = "for"
-IF           = "if"
-GOTO         = "goto"
-IMPLEMENTS   = "implements"
-IMPORT       = "import"
-INSTANCEOF   = "instanceof"
-INT          = "int"
-INTERFACE    = "interface"
-LONG         = "long"
-NATIVE       = "native"
-NEW          = "new"
-PACKAGE      = "package"
-PRIVATE      = "private"
-PROTECTED    = "protected"
-PUBLIC       = "public"
-RETURN       = "return"
-SHORT        = "short"
-STATIC       = "static"
-STRICTFP     = "strictfp"
-SUPER        = "super"
-SWITCH       = "switch"
-SYNCHRONIZED = "synchronized"
-THIS         = "this"
-THROW        = "throw"
-THROWS       = "throws"
-TRANSIENT    = "transient"
-TRY          = "try"
-VOID         = "void"
-VOLATILE     = "volatile"
-WHILE        = "while"
-
-# Module related keywords
-MODULE     = "module"
-OPEN       = "open"
-REQUIRES   = "requires"
-EXPORTS    = "exports"
-OPENS      = "opens"
-TO         = "to"
-USES       = "uses"
-PROVIDES   = "provides"
-WITH       = "with"
-TRANSITIVE = "transitive"
-
-# Local Variable Type Inference
-VAR = "var" # reserved type name
-
-# Switch Expressions
-YIELD = "yield" # reserved type name from Java 14
-
-# Records
-RECORD = "record"
-
-# Sealed Classes
-SEALED     = "sealed"
-PERMITS    = "permits"
-NON_SEALED = "non-sealed"
-
-# Literals
-DECIMAL_LITERAL   = /0|[1-9]([_\d]*\d)?[lL]?/
-HEX_LITERAL       = /0[xX][0-9a-fA-F]([0-9a-fA-F_]*[0-9a-fA-F])?[lL]?/
-OCT_LITERAL       = /0[0-7]([0-7_]*[0-7])?[lL]?/
-BINARY_LITERAL    = /0[bB][01]([01_]*[01])?[lL]?/
-FLOAT_LITERAL     = /((\d+\.\d*|\.\d+)([eE][+-]?\d+)?|[+-]?\d+[eE][+-]?\d+)[fFdD]?/
-HEX_FLOAT_LITERAL = /0[xX]([0-9a-fA-F]+(\.[0-9a-fA-F]*)?|\.[0-9a-fA-F]+)[pP][+-]?\d+[fFdD]?/
-BOOL_LITERAL      = /true|false/
-CHAR_LITERAL      = /'([^'\\\r\n]|\\['"\\bfnrt]|\\u[0-9a-fA-F]{4}|\\[^'"\r\n])*'/
-STRING_LITERAL    = /"([^"\\\r\n]|\\["\\bfnrt]|\\u[0-9a-fA-F]{4}|\\[^"\r\n])*"/
-TEXT_BLOCK        = /"""\s*(.|\\["\\bfnrt])*?\s*"""/
-NULL_LITERAL      = "null"
-
-# Separators
-LPAREN = "("
-RPAREN = ")"
-LBRACE = "{"
-RBRACE = "}"
-LBRACK = "["
-RBRACK = "]"
-SEMI   = ";"
-COMMA  = ","
-DOT    = "."
-
-# Operators
-ASSIGN   = "="
-GT       = ">"
-LT       = "<"
-BANG     = "!"
-TILDE    = "~"
-QUESTION = "?"
-COLON    = ":"
-EQUAL    = "=="
-LE       = "<="
-GE       = ">="
-NOTEQUAL = "!="
-AND      = "&&"
-OR       = "||"
-INC      = "++"
-DEC      = "--"
-ADD      = "+"
-SUB      = "-"
-MUL      = "*"
-DIV      = "/"
-BITAND   = "&"
-BITOR    = "|"
-CARET    = "^"
-MOD      = "%"
-
-ADD_ASSIGN     = "+="
-SUB_ASSIGN     = "-="
-MUL_ASSIGN     = "*="
-DIV_ASSIGN     = "/="
-AND_ASSIGN     = "&="
-OR_ASSIGN      = "|="
-XOR_ASSIGN     = "^="
-MOD_ASSIGN     = "%="
-LSHIFT_ASSIGN  = "<<="
-RSHIFT_ASSIGN  = ">>="
-URSHIFT_ASSIGN = ">>>="
-
-# Java 8 tokens
-ARROW      = "->"
-COLONCOLON = "::"
-
-# Additional symbols not defined in the lexical specification
-AT       = "@"
-ELLIPSIS = "..."
-
-# Whitespace and comments
-WS           = /[ \t\r\n\x0C]+/
-COMMENT      = /\/\*.*?\*\//m
-LINE_COMMENT = /\/\/[^\r\n]*/
-
-# Identifiers
-IDENTIFIER = /[a-zA-Z$_][a-zA-Z\d$_]*/
-
-# Fragment rules
-ExponentPart   = /[eE][+-]?\d+/
-EscapeSequence = /\\(?:u005c)?[btnfr"'\\]|\\u(?:[0-3]?[0-7])?[0-7]|\\u[0-9a-fA-F]{4}/
-HexDigits      = /[0-9a-fA-F]([_0-9a-fA-F]*[0-9a-fA-F])?/
-HexDigit       = /[0-9a-fA-F]/
-Digits         = /\d([_\d]*\d)?/
-LetterOrDigit  = /[a-zA-Z\d$_]/
-Letter         = /[a-zA-Z$_]|[^[:ascii:]]/
-
 class JavaLexer < MiniLexer
+  # Keywords
+  ABSTRACT     = "abstract"
+  ASSERT       = "assert"
+  BOOLEAN      = "boolean"
+  BREAK        = "break"
+  BYTE         = "byte"
+  CASE         = "case"
+  CATCH        = "catch"
+  CHAR         = "char"
+  CLASS        = "class"
+  CONST        = "const"
+  CONTINUE     = "continue"
+  DEFAULT      = "default"
+  DO           = "do"
+  DOUBLE       = "double"
+  ELSE         = "else"
+  ENUM         = "enum"
+  EXTENDS      = "extends"
+  FINAL        = "final"
+  FINALLY      = "finally"
+  FLOAT        = "float"
+  FOR          = "for"
+  IF           = "if"
+  GOTO         = "goto"
+  IMPLEMENTS   = "implements"
+  IMPORT       = "import"
+  INSTANCEOF   = "instanceof"
+  INT          = "int"
+  INTERFACE    = "interface"
+  LONG         = "long"
+  NATIVE       = "native"
+  NEW          = "new"
+  PACKAGE      = "package"
+  PRIVATE      = "private"
+  PROTECTED    = "protected"
+  PUBLIC       = "public"
+  RETURN       = "return"
+  SHORT        = "short"
+  STATIC       = "static"
+  STRICTFP     = "strictfp"
+  SUPER        = "super"
+  SWITCH       = "switch"
+  SYNCHRONIZED = "synchronized"
+  THIS         = "this"
+  THROW        = "throw"
+  THROWS       = "throws"
+  TRANSIENT    = "transient"
+  TRY          = "try"
+  VOID         = "void"
+  VOLATILE     = "volatile"
+  WHILE        = "while"
+
+  # Module related keywords
+  MODULE     = "module"
+  OPEN       = "open"
+  REQUIRES   = "requires"
+  EXPORTS    = "exports"
+  OPENS      = "opens"
+  TO         = "to"
+  USES       = "uses"
+  PROVIDES   = "provides"
+  WITH       = "with"
+  TRANSITIVE = "transitive"
+
+  # Local Variable Type Inference
+  VAR = "var" # reserved type name
+
+  # Switch Expressions
+  YIELD = "yield" # reserved type name from Java 14
+
+  # Records
+  RECORD = "record"
+
+  # Sealed Classes
+  SEALED     = "sealed"
+  PERMITS    = "permits"
+  NON_SEALED = "non-sealed"
+
+  # Literals
+  DECIMAL_LITERAL   = /0|[1-9]([_\d]*\d)?[lL]?/
+  HEX_LITERAL       = /0[xX][0-9a-fA-F]([0-9a-fA-F_]*[0-9a-fA-F])?[lL]?/
+  OCT_LITERAL       = /0[0-7]([0-7_]*[0-7])?[lL]?/
+  BINARY_LITERAL    = /0[bB][01]([01_]*[01])?[lL]?/
+  FLOAT_LITERAL     = /((\d+\.\d*|\.\d+)([eE][+-]?\d+)?|[+-]?\d+[eE][+-]?\d+)[fFdD]?/
+  HEX_FLOAT_LITERAL = /0[xX]([0-9a-fA-F]+(\.[0-9a-fA-F]*)?|\.[0-9a-fA-F]+)[pP][+-]?\d+[fFdD]?/
+  BOOL_LITERAL      = /true|false/
+  CHAR_LITERAL      = /'([^'\\\r\n]|\\['"\\bfnrt]|\\u[0-9a-fA-F]{4}|\\[^'"\r\n])*'/
+  STRING_LITERAL    = /"([^"\\\r\n]|\\["\\bfnrt]|\\u[0-9a-fA-F]{4}|\\[^"\r\n])*"/
+  TEXT_BLOCK        = /"""\s*(.|\\["\\bfnrt])*?\s*"""/
+  NULL_LITERAL      = "null"
+
+  # Separators
+  LPAREN = "("
+  RPAREN = ")"
+  LBRACE = "{"
+  RBRACE = "}"
+  LBRACK = "["
+  RBRACK = "]"
+  SEMI   = ";"
+  COMMA  = ","
+  DOT    = "."
+
+  # Operators
+  ASSIGN   = "="
+  GT       = ">"
+  LT       = "<"
+  BANG     = "!"
+  TILDE    = "~"
+  QUESTION = "?"
+  COLON    = ":"
+  EQUAL    = "=="
+  LE       = "<="
+  GE       = ">="
+  NOTEQUAL = "!="
+  AND      = "&&"
+  OR       = "||"
+  INC      = "++"
+  DEC      = "--"
+  ADD      = "+"
+  SUB      = "-"
+  MUL      = "*"
+  DIV      = "/"
+  BITAND   = "&"
+  BITOR    = "|"
+  CARET    = "^"
+  MOD      = "%"
+
+  ADD_ASSIGN     = "+="
+  SUB_ASSIGN     = "-="
+  MUL_ASSIGN     = "*="
+  DIV_ASSIGN     = "/="
+  AND_ASSIGN     = "&="
+  OR_ASSIGN      = "|="
+  XOR_ASSIGN     = "^="
+  MOD_ASSIGN     = "%="
+  LSHIFT_ASSIGN  = "<<="
+  RSHIFT_ASSIGN  = ">>="
+  URSHIFT_ASSIGN = ">>>="
+
+  # Java 8 tokens
+  ARROW      = "->"
+  COLONCOLON = "::"
+
+  # Additional symbols not defined in the lexical specification
+  AT       = "@"
+  ELLIPSIS = "..."
+
+  # Whitespace and comments
+  WS           = /[ \t\r\n\x0C]+/
+  COMMENT      = /\/\*.*?\*\//m
+  LINE_COMMENT = /\/\/[^\r\n]*/
+
+  # Identifiers
+  IDENTIFIER = /[a-zA-Z$_][a-zA-Z\d$_]*/
+
+  # Fragment rules
+  ExponentPart   = /[eE][+-]?\d+/
+  EscapeSequence = /\\(?:u005c)?[btnfr"'\\]|\\u(?:[0-3]?[0-7])?[0-7]|\\u[0-9a-fA-F]{4}/
+  HexDigits      = /[0-9a-fA-F]([_0-9a-fA-F]*[0-9a-fA-F])?/
+  HexDigit       = /[0-9a-fA-F]/
+  Digits         = /\d([_\d]*\d)?/
+  LetterOrDigit  = /[a-zA-Z\d$_]/
+  Letter         = /[a-zA-Z$_]|[^[:ascii:]]/
+
   def initialize
     super
   end
@@ -174,11 +174,11 @@ class JavaLexer < MiniLexer
   end
 
   def tokenize_logic(@input : String) : Array(Token)
+    after_skip = -1
     while @position < @input.size
-      before_skip_position = -1
-      while before_skip_position < @position
+      while @position != after_skip
         skip_whitespace_and_comments
-        before_skip_position = @position
+        after_skip = @position
       end
       break if @position == @input.size
 
@@ -192,7 +192,7 @@ class JavaLexer < MiniLexer
       when '"'
         match_string_literal_or_text_block
       else
-        match_symbol_or_operator
+        match_other
       end
     end
 
@@ -335,7 +335,7 @@ class JavaLexer < MiniLexer
       @position += match[0].size
     else
       # impossible to reach here
-      self << Tuple.new(:IDENTIFIER, @input[@position].to_s)
+      self << Tuple.new(:UNKNOWN, @input[@position].to_s)
       @position += 1
     end
   end
@@ -349,28 +349,35 @@ class JavaLexer < MiniLexer
       @position += match[0].size
     else
       # impossible to reach here
-      self << Tuple.new(:IDENTIFIER, @input[@position].to_s)
+      self << Tuple.new(:UNKNOWN, @input[@position].to_s)
       @position += 1
     end
   end
 
-  def match_symbol_or_operator
+  def match_other
     case @input[@position]
-    when '('  then self << Tuple.new(:LPAREN, "(")
-    when ')'  then self << Tuple.new(:RPAREN, ")")
-    when ' '  then self << Tuple.new(:WHITESPACE, " ")
-    when '.'  then self << Tuple.new(:DOT, ".")
-    when ','  then self << Tuple.new(:COMMA, ",")
-    when '@'  then self << Tuple.new(:AT, "@")
-    when '{'  then self << Tuple.new(:LBRACE, "{")
-    when '}'  then self << Tuple.new(:RBRACE, "}")
+    when '(' then self << Tuple.new(:LPAREN, "(")
+    when ')' then self << Tuple.new(:RPAREN, ")")
+    when '.' then self << Tuple.new(:DOT, ".")
+    when ',' then self << Tuple.new(:COMMA, ",")
+    when '@' then self << Tuple.new(:AT, "@")
+    when '{' then self << Tuple.new(:LBRACE, "{")
+    when '}' then self << Tuple.new(:RBRACE, "}")
+    when ';' then self << Tuple.new(:SEMI, ";")
+    when '='
+      if @input[@position + 1] == '='
+        @position += 1
+        Tuple.new(:EQUAL, "==")
+      else
+        Tuple.new(:ASSIGN, "=")
+      end
     when '\t' then self << Tuple.new(:TAB, "\t")
-    when ';'  then self << Tuple.new(:SEMI, ";")
-    when '='  then self << Tuple.new(:ASSIGN, "=")
     when '\n'
       self << Tuple.new(:NEWLINE, "\n")
+    when ' '
+      # Skipping whitespace for efficiency
     else
-      self << Tuple.new(:IDENTIFIER, @input[@position].to_s)
+      self << Tuple.new(:UNKNOWN, @input[@position].to_s)
     end
     @position += 1
   end

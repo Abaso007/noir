@@ -1,15 +1,21 @@
 <div align="center">
-  <img src="https://github.com/noir-cr/noir/assets/13212227/8c4470fe-c8f4-4060-9f12-b038ad211913" alt="" width="500px;">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/owasp-noir/noir/assets/13212227/04aee7d0-c224-481b-8d79-2dbdcf3ad84b" width="500px;">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/owasp-noir/noir/assets/13212227/0577860e-3d7e-4294-8f1f-dc7b87ce2b2b" width="500px;">
+    <img alt="OWASP Noir Logo" src="https://github.com/owasp-noir/noir/assets/13212227/04aee7d0-c224-481b-8d79-2dbdcf3ad84b" width="500px;">
+  </picture>
   <p>Attack surface detector that identifies endpoints by static analysis.</p>
 </div>
 
 <p align="center">
-<a href="https://github.com/noir-cr/noir/blob/main/CONTRIBUTING.md">
+<a href="https://github.com/owasp-noir/noir/blob/main/CONTRIBUTING.md">
 <img src="https://img.shields.io/badge/CONTRIBUTIONS-WELCOME-000000?style=for-the-badge&labelColor=black"></a>
-<a href="https://github.com/noir-cr/noir/releases">
-<img src="https://img.shields.io/github/v/release/noir-cr/noir?style=for-the-badge&color=black&labelColor=black&logo=web"></a>
+<a href="https://github.com/owasp-noir/noir/releases">
+<img src="https://img.shields.io/github/v/release/owasp-noir/noir?style=for-the-badge&color=black&labelColor=black&logo=web"></a>
 <a href="https://crystal-lang.org">
 <img src="https://img.shields.io/badge/Crystal-000000?style=for-the-badge&logo=crystal&logoColor=white"></a>
+<a href="https://owasp.org/www-project-noir/">
+<img src="https://img.shields.io/badge/OWASP-000000?style=for-the-badge&logo=owasp&logoColor=white"></a>
 </p>
 
 <p align="center">
@@ -61,8 +67,8 @@
 | Php      |             | ✅   | ✅    | ✅    | ✅     | X      | X  |
 | Java     | Jsp         | ✅   | ✅    | ✅    | X      | X      | X  |
 | Java     | Armeria     | ✅   | ✅    | X     | X      | X      | X  |
-| Java     | Spring      | ✅   | ✅    | X     | X      | X      | X  |
-| Kotlin   | Spring      | ✅   | ✅    | ✅    | X      | X      | X  |
+| Java     | Spring      | ✅   | ✅    | ✅    | ✅     | X      | X  |
+| Kotlin   | Spring      | ✅   | ✅    | ✅    | ✅     | ✅     | X  |
 | JS       | Express     | ✅   | ✅    | ✅    | ✅     | ✅     | X  |
 | JS       | Restify     | ✅   | ✅    | ✅    | ✅     | ✅     | X  |
 | Rust     | Axum        | ✅   | ✅    | X     | X      | X      | X  |
@@ -88,7 +94,7 @@
 </details>
 
 ## Installation
-### Homebrew (macOS)
+### Homebrew
 
 ```bash
 brew install noir
@@ -96,7 +102,7 @@ brew install noir
 # https://formulae.brew.sh/formula/noir
 ```
 
-### Snapcraft (linux)
+### Snapcraft
 
 ```bash
 sudo snap install noir
@@ -110,7 +116,7 @@ sudo snap install noir
 # https://crystal-lang.org/install/
 
 # Clone this repo
-git clone https://github.com/noir-cr/noir
+git clone https://github.com/owasp-noir/noir
 cd noir
 
 # Install Dependencies
@@ -125,17 +131,23 @@ cp ./bin/noir /usr/bin/
 
 ### Docker (GHCR)
 ```bash
-docker pull ghcr.io/noir-cr/noir:latest
+docker pull ghcr.io/owasp-noir/noir:main
 ```
 
 ## Usage
+```bash
+noir -h 
 ```
-Usage: noir <flags>
-  Basic:
+
+```
+USAGE: noir <flags>
+
+FLAGS:
+  BASE:
     -b PATH, --base-path ./app       (Required) Set base path
     -u URL, --url http://..          Set base url for endpoints
 
-  Output:
+  OUTPUT:
     -f FORMAT, --format json         Set output format
                                        * plain yaml json jsonl markdown-table
                                        * curl httpie oas2 oas3
@@ -146,12 +158,12 @@ Usage: noir <flags>
     --no-color                       Disable color output
     --no-log                         Displaying only the results
 
-  Tagger:
+  TAGGER:
     -T, --use-all-taggers            Activates all taggers for full analysis coverage
-    --use-taggers VALUES             Activates specific taggers (e.g., --use-taggers hunt,etc)
+    --use-taggers VALUES             Activates specific taggers (e.g., --use-taggers hunt,oauth)
     --list-taggers                   Lists all available taggers
 
-  Deliver:
+  DELIVER:
     --send-req                       Send results to a web request
     --send-proxy http://proxy..      Send results to a web request via an HTTP proxy
     --send-es http://es..            Send results to Elasticsearch
@@ -159,18 +171,25 @@ Usage: noir <flags>
     --use-matchers string            Send URLs that match specific conditions to the Deliver
     --use-filters string             Exclude URLs that match specified conditions and send the rest to Deliver
 
-  Technologies:
+  DIFF:
+    --diff-path ./app2               Specify the path to the old version of the source code for comparison
+
+  TECHNOLOGIES:
     -t TECHS, --techs rails,php      Specify the technologies to use
     --exclude-techs rails,php        Specify the technologies to be excluded
     --list-techs                     Show all technologies
 
-  Config:
+  CONFIG:
     --config-file ./config.yaml      Specify the path to a configuration file in YAML format
     --concurrency 100                Set concurrency
+    --generate-completion zsh        Generate Zsh/Bash completion script
 
-  Others:
+  DEBUG:
     -d, --debug                      Show debug messages
     -v, --version                    Show version
+    --build-info                     Show version and Build info
+
+  OTHERS:
     -h, --help                       Show help
 ```
 
@@ -179,7 +198,7 @@ Example
 noir -b . -u https://testapp.internal.domains -T
 ```
 
-![](https://github.com/noir-cr/noir/assets/13212227/4e69da04-d585-4745-9cc7-ef6e69e193b0)
+![](https://github.com/owasp-noir/noir/assets/13212227/4e69da04-d585-4745-9cc7-ef6e69e193b0)
 
 JSON Result
 ```
