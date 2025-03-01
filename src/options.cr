@@ -114,7 +114,8 @@ def run_options_parser
     parser.on "--ai-provider PREFIX|URL", "Specify the AI (LLM) provider or directly set a custom API URL. Required for AI features.\n" \
                                           "  [Prefixes and Default URLs]\n" \
                                           "  * openai: https://api.openai.com\n" \
-                                          "  * x.ai: https://api.x.ai\n" \
+                                          "  * xai: https://api.x.ai\n" \
+                                          "  * github: https://models.github.ai\n" \
                                           "  * azure: https://models.inference.ai.azure.com\n" \
                                           "  * vllm: http://localhost:8000\n" \
                                           "  * ollama: http://localhost:11434\n" \
@@ -189,10 +190,16 @@ def run_options_parser
       puts "TARGET:            #{Crystal::TARGET_TRIPLE}"
       exit
     end
+    parser.on "--verbose", "Show verbose messages (+ automatically enable --include-path, --use-all-taggers)" do
+      noir_options["verbose"] = YAML::Any.new(true)
+      noir_options["include_path"] = YAML::Any.new(true)
+      noir_options["all_taggers"] = YAML::Any.new(true)
+    end
     parser.separator "\n  OTHERS:".colorize(:blue)
     parser.on "-h", "--help", "Show help" do
       banner()
       puts parser
+      exit
     end
     parser.on "--help-all", "Show all help" do
       banner()
